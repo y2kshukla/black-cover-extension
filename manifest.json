@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Black Cover",
+  "version": "1.1",
+  "description": "Overlay black cover on user-specified pages.",
+  "permissions": ["storage", "scripting", "tabs"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Black Cover Settings"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
