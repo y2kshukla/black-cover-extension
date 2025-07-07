@@ -1,3 +1,4 @@
+// 1. Toggle black overlay when icon clicked
 chrome.action.onClicked.addListener((tab) => {
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
@@ -19,9 +20,16 @@ function toggleBlackCover() {
       width: '100vw',
       height: '100vh',
       backgroundColor: 'black',
-      zIndex: '2147483647', // max z-index
-      pointerEvents: 'none', // lets clicks pass through, remove if you want a true block
+      zIndex: '2147483647',
+      pointerEvents: 'none',
     });
-    document.documentElement.appendChild(div); // append to root for top priority
+    document.documentElement.appendChild(div);
   }
 }
+
+// 2. Listen for "closeTab" message from content script
+chrome.runtime.onMessage.addListener((message, sender) => {
+  if (message.action === "closeTab" && sender.tab && sender.tab.id) {
+    chrome.tabs.remove(sender.tab.id);
+  }
+});

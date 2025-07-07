@@ -1,10 +1,20 @@
 {
   "manifest_version": 3,
   "name": "Black Cover",
-  "version": "1.1",
-  "description": "Overlay black cover on user-specified pages.",
+  "version": "1.2",
+  "description": "Hide your activity with a black cover, Wikipedia redirect, or tab close.",
   "permissions": ["storage", "scripting", "tabs"],
+  "icons": {
+    "16": "resources/icon16.png",
+    "48": "resources/icon48.png",
+    "128": "resources/icon128.png"
+  },
   "action": {
+    "default_icon": {
+      "16": "resources/icon16.png",
+      "48": "resources/icon48.png",
+      "128": "resources/icon128.png"
+    },
     "default_popup": "popup.html",
     "default_title": "Black Cover Settings"
   },
